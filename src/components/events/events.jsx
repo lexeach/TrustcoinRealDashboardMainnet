@@ -318,7 +318,7 @@ const BasicTable = () => {
                         <h4> {users_autopoolPayReciever}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> ID :- </h4> <h4> {users_id}</h4>
+                        <h4> My User ID :- </h4> <h4> {users_id}</h4>
                       </div>
                       <div className="d-flex">
                         <h4> Total Income :- </h4>
@@ -337,7 +337,7 @@ const BasicTable = () => {
                         <h4> {users_referredUsers}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> My sponsor ID :- </h4>
+                        <h4> My sponsor :- </h4>
                         <h4> {users_referrerID}</h4>
                       </div>
                     </>
