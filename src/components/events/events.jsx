@@ -210,7 +210,7 @@ const BasicTable = () => {
         <div className="col-lg-6 col-md-6 col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
-              <h5>User List </h5>
+              <h5>Check Wallet by ID </h5>
               <div className="row">
                 <div className="col-12 col-sm-12 col-xl-12 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
@@ -281,7 +281,7 @@ const BasicTable = () => {
         <div className="col-lg-12 col-md-12 col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
-              <h5>Users</h5>
+              <h5>User Details by wallet address</h5>
               <div className="row">
                 <div className="col-12 col-sm-12 col-xl-12 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
@@ -325,7 +325,7 @@ const BasicTable = () => {
                         <h4> ID :- </h4> <h4> {users_id}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Income :- </h4>
+                        <h4> Total Income :- </h4>
                         <h4> {users_income}</h4>
                       </div>
                       <div className="d-flex">
@@ -333,11 +333,11 @@ const BasicTable = () => {
                         <h4> {users_isExist}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Level Income Recived :- </h4>
+                        <h4> Total Level Income :- </h4>
                         <h4> {users_levelIncomeReceived}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Missed Pool Payment :- </h4>
+                        <h4> Missed AutoPool Income :- </h4>
                         <h4> {users_missedPoolPayment}</h4>
                       </div>
                       <div className="d-flex">
