@@ -363,7 +363,7 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0" style={{ fontSize: "15px" }}>
-                      {current_tokenAccepting ? registration_Free / 10 : 0}
+                      {current_tokenAccepting ? registration_Free / 10 : 0 & USDT}
                     </h4>
                   </div>
                 </div>
