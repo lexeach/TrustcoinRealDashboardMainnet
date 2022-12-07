@@ -318,19 +318,11 @@ const BasicTable = () => {
                         <h4> {users_autopoolPayReciever}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Batch Paid :- </h4>
-                        <h4> {users_batchPaid}</h4>
-                      </div>
-                      <div className="d-flex">
                         <h4> ID :- </h4> <h4> {users_id}</h4>
                       </div>
                       <div className="d-flex">
                         <h4> Total Income :- </h4>
                         <h4> {users_income}</h4>
-                      </div>
-                      <div className="d-flex">
-                        <h4> is Exist :- </h4>
-                        <h4> {users_isExist}</h4>
                       </div>
                       <div className="d-flex">
                         <h4> Total Level Income :- </h4>
