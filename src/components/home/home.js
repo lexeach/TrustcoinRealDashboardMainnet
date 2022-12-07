@@ -313,7 +313,7 @@ const Dashboard = () => {
         <div className="col-lg-4 col-md-6 col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
-              <h5>Metamask Balance</h5>
+              <h5>BNB Balance</h5>
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
@@ -358,7 +358,7 @@ const Dashboard = () => {
         <div className="col-lg-3 col-md-6 col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
-              <h5>Sponser Income</h5>
+              <h5>Direct Income</h5>
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
@@ -425,7 +425,7 @@ const Dashboard = () => {
         <div className="col-lg-6 col-md-6 col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
-              <h5>Pay autopool</h5>
+              <h5>Autopool Income</h5>
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
@@ -454,7 +454,7 @@ const Dashboard = () => {
         <div className="col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
-              <h5>Referrel ID</h5>
+              <h5>Sponsor ID</h5>
               <div className="row">
                 <div className="col-sm-12 my-auto">
                   <form className="forms-sample" onSubmit={handleSubmit}>
