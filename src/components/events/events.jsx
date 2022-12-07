@@ -341,11 +341,11 @@ const BasicTable = () => {
                         <h4> {users_missedPoolPayment}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Reffered User :- </h4>
+                        <h4> Total Direct :- </h4>
                         <h4> {users_referredUsers}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Refferrer ID :- </h4>
+                        <h4> My sponsor ID :- </h4>
                         <h4> {users_referrerID}</h4>
                       </div>
                     </>
