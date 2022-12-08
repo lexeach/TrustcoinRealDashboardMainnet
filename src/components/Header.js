@@ -62,7 +62,7 @@ function DrawerAppBar(props) {
   const { ethereum } = window;
 
   if (!ethereum) {
-    alert("Please Install MetaMask");
+    alert("Please Install wallet or open in dApp Browser");
     window.location.reload();
   }
 
