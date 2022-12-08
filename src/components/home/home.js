@@ -303,7 +303,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{tokenBalance ? tokenBalance : 0}</h4>
+                    <h4 className="mb-0">{tokenBalance ? tokenBalance : 0} TRCT</h4>
                   </div>
                 </div>
               </div>
@@ -333,7 +333,7 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0">
-                      {registration_Free ? registration_Free : 0}
+                      {registration_Free ? registration_Free : 0} USDT
                     </h4>
                   </div>
                 </div>
@@ -363,7 +363,8 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0" style={{ fontSize: "15px" }}>
-                      {current_tokenAccepting ? registration_Free / 10 : 0}
+                      {current_tokenAccepting ? registration_Free / 10 : 0}{" "}
+                      (USDT)
                     </h4>
                   </div>
                 </div>
@@ -379,7 +380,7 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0">
-                      {tokenRewarded ? tokenRewarded : 0}
+                      {tokenRewarded ? tokenRewarded : 0} TRCT
                     </h4>
                   </div>
                 </div>
@@ -395,7 +396,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{tokenPrice ? tokenPrice : 0}</h4>
+                    <h4 className="mb-0">{tokenPrice ? tokenPrice : 0} USDT </h4>
                   </div>
                 </div>
               </div>
@@ -409,7 +410,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{nextReward ? nextReward : 0}</h4>
+                    <h4 className="mb-0">{nextReward ? nextReward : 0} TRCT </h4>
                   </div>
                 </div>
               </div>
@@ -429,7 +430,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 className="mb-0">{payAutoPool ? payAutoPool : 0}</h2>
+                    <h2 className="mb-0">{payAutoPool ? payAutoPool : 0} USDT </h2>
                   </div>
                 </div>
               </div>
@@ -443,7 +444,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 className="mb-0">{levelPrice ? levelPrice : 0}</h2>
+                    <h2 className="mb-0">{levelPrice ? levelPrice : 0} USDT </h2>
                   </div>
                 </div>
               </div>
