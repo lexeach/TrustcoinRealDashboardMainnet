@@ -289,7 +289,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{frznBalance ? frznBalance : 0}</h4>
+                    <h4 className="mb-0">{frznBalance ? frznBalance : 0} (TRCT)</h4>
                   </div>
                 </div>
               </div>
