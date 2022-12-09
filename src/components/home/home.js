@@ -420,7 +420,7 @@ const Dashboard = () => {
 
         <div className="col-sm-12 grid-margin">
           <div className="card">
-            <div className="card-body text-center">User</div>
+            <div className="card-body text-center">TRCT address 0x2eD68EF708f0a04eaeb705D1A5700F72E9a6054C</div>
           </div>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 grid-margin">
