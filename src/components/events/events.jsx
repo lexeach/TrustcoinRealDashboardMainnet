@@ -310,7 +310,7 @@ const BasicTable = () => {
                       </div>
                       <div className="d-flex">
                         <h4 className="heading_">Total Income :- </h4>
-                        <h4> {users_income}USDT</h4>
+                        <h4> {users_income} USDT</h4>
                      
                       </div>
                       <div className="d-flex">
