@@ -61,3 +61,33 @@ h4 {
     margin-right: 10px !important;
   }
 }
+
+a {
+  text-decoration: none !important;
+}
+
+.logo-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+.account_mob_ {
+  span {
+    font-size: 8px !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .user-detail-res {
+    .d-flex {
+      display: unset !important;
+      .heading_ {
+        font-weight: 800 !important;
+      }
+      h4 {
+        display: block !important;
+        width: 100% !important;
+      }
+    }
+  }
+}

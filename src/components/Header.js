@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
+import Logo from "../assets/images/logo.jpeg";
 import Web3 from "web3";
 
 const drawerWidth = 240;
@@ -35,9 +36,18 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        ICO
+        <img className="logo-img" src={Logo} alt="ICOlogo" />
       </Typography>
       <Divider />
+
+      {/* <Button sx={{ color: "#fff" }}>{account}</Button> */}
+      <List>
+        {/* <ListItem disablePadding> */}
+        <ListItemButton sx={{ textAlign: "center" }}>
+          <ListItemText className="account_mob_" primary={account} />
+        </ListItemButton>
+        {/* </ListItem> */}
+      </List>
       <List>
         <Link to={`/`}>
           <ListItem disablePadding>
@@ -62,7 +72,7 @@ function DrawerAppBar(props) {
   const { ethereum } = window;
 
   if (!ethereum) {
-    alert("Please Install wallet or open in dApp Browser");
+    alert("Please Install MetaMask");
     window.location.reload();
   }
 
@@ -96,7 +106,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            ICO
+            <img className="logo-img" src={Logo} alt="ICOlogo" />
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button sx={{ color: "#fff" }}>{account}</Button>

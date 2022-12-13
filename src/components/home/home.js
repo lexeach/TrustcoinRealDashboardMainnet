@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import abiDecoder from "abi-decoder";
-
-import Box from "@mui/material/Box";
-
 import Web3 from "web3";
 import { ICU, BEP20, USDT } from "../../utils/web3.js";
 
@@ -21,7 +18,6 @@ const Dashboard = () => {
   const [levelPrice, setLevelPrice] = useState();
 
   const [referrerID, setReferrerID] = useState({ id: "" });
-  // const [tokenAmount, setTokenAmount] = useState(null);
   const [tokenReword, setTokenReword] = useState({ amount: "" });
   const [regFess, setRegFess] = useState({ amount: "" });
   const [tkAcc, settkAcc] = useState(null);
@@ -33,6 +29,10 @@ const Dashboard = () => {
   useEffect(() => {
     async function load() {
       const accounts = await web3.eth.requestAccounts();
+      console.log("accounts00000NNNN", accounts);
+      if (!accounts) {
+        alert("please install metamask");
+      }
       let balance = await web3.eth.getBalance(accounts[0]);
       const etherValue = web3.utils.fromWei(balance, "ether");
       setBalance(etherValue);
@@ -59,7 +59,7 @@ const Dashboard = () => {
       const convert_pay_auto_pool = web3.utils.fromWei(pay_auto_pool, "ether");
 
       const frozenBalance_convert = web3.utils.fromWei(frozenBalance, "ether");
-      setFrznBalance(frozenBalance_convert);
+      setFrznBalance(roundToFour(frozenBalance_convert));
 
       const convert_regfee = web3.utils.fromWei(RegistrationFee, "ether");
       setRegistrationFee(convert_regfee);
@@ -68,44 +68,35 @@ const Dashboard = () => {
       setCurrentTokenAccepting(currentTokenAccepting);
 
       const token_rewared_convert = web3.utils.fromWei(token_rewared, "ether");
-      setTokenRewarded(token_rewared_convert);
-      setPayAutoPool(convert_pay_auto_pool);
+      setTokenRewarded(roundToFour(token_rewared_convert));
+      setPayAutoPool(roundToFour(convert_pay_auto_pool));
 
       const convert_levelincome = web3.utils.fromWei(level_income, "ether");
-      setLevelPrice(convert_levelincome);
+      setLevelPrice(roundToFour(convert_levelincome));
 
       // token balance
       let token_balance = await BEP20_.methods.balanceOf(accounts[0]).call();
 
       const convert_tokenBal = web3.utils.fromWei(token_balance, "ether");
-      setTokenBalance(convert_tokenBal);
+      setTokenBalance(roundToFour(convert_tokenBal));
 
       // Set Token PRice and Next Level Reward
       const tokenPriceIs_convert = web3.utils.fromWei(tokenPriceIs, "ether");
       const getNextReward_convert = web3.utils.fromWei(getNextReward, "ether");
+
       setTokenPrice(tokenPriceIs_convert);
-      setNetxtReward(getNextReward_convert);
+      setNetxtReward(roundToFour(getNextReward_convert));
+    }
+
+    function roundToFour(num) {
+      return +(Math.round(num + "e+4") + "e-4");
     }
     load();
   }, []);
 
-  window.ethereum.on("accountsChanged", async (account) => {
-    setAccount(account[0]);
-    let balance = await web3.eth.getBalance(account[0]);
-
-    const etherValue = web3.utils.fromWei(balance, "ether");
-    setBalance(etherValue);
-  });
-
   const handleChange = (event) => {
     let { name, value } = event.target;
     setReferrerID({ ...referrerID, [name]: value });
-    // console.log("[name]:value",{[name]:value})
-    // if(name== 'id'){
-    // }else{
-    //   setTokenAmount(value)
-
-    // }
   };
 
   const handleChangeTkReword = (event) => {
@@ -135,7 +126,6 @@ const Dashboard = () => {
       let isAllowance = await USDT_.methods
         .allowance(account, ICU.address)
         .call();
-      console.log("Allownace is :", isAllowance);
       let isApprove, reg_user;
       if (isAllowance < value_) {
         isApprove = await USDT_.methods
@@ -160,14 +150,9 @@ const Dashboard = () => {
       console.log("the approve response", approve);
       console.log("the value out of status", value_);
       if (approve.status === true) {
-        console.log("the value inside of status", value_);
-
         let reg_user = await ICU_.methods
           .regUser(referrerID.id, value_)
           .send({ from: account, value: 0 });
-        console.log("******  with out ", reg_user);
-
-        // console.log(reg_user)
         if (reg_user.status) {
           alert("Registerd Success");
         } else {
@@ -179,7 +164,6 @@ const Dashboard = () => {
 
   const handleSubmitTKRword = async (event) => {
     event.preventDefault();
-    console.log("Token Reword Called", tokenReword);
 
     let ICU_ = new web3.eth.Contract(ICU.ABI, ICU.address);
     let tkrword = await ICU_.methods
@@ -194,7 +178,6 @@ const Dashboard = () => {
 
   const handleSubmitRegFee = async (event) => {
     event.preventDefault();
-    console.log("reg fess Called", regFess);
 
     let ICU_ = new web3.eth.Contract(ICU.ABI, ICU.address);
     let regfess = await ICU_.methods
@@ -209,8 +192,6 @@ const Dashboard = () => {
 
   const handleSubmitAcceptance = async (event) => {
     event.preventDefault();
-    console.log("reg fess Called", tkAcc.value);
-
     let ICU_ = new web3.eth.Contract(ICU.ABI, ICU.address);
     let tkAccept = await ICU_.methods
       .setTokenAcceptance(tkAcc.value)
@@ -289,7 +270,9 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{frznBalance ? frznBalance : 0} TRCT</h4>
+                    <h4 className="mb-0">
+                      {frznBalance ? frznBalance : 0} (TRCT)
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -303,7 +286,9 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{tokenBalance ? tokenBalance : 0} TRCT</h4>
+                    <h4 className="mb-0">
+                      {tokenBalance ? tokenBalance : 0} (TRCT)
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -333,7 +318,7 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0">
-                      {registration_Free ? registration_Free : 0} USDT
+                      {registration_Free ? registration_Free : 0} (USDT)
                     </h4>
                   </div>
                 </div>
@@ -363,7 +348,7 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0" style={{ fontSize: "15px" }}>
-                      {current_tokenAccepting ? registration_Free / 10 : 0}{" "}
+                      {current_tokenAccepting ? registration_Free / 5 : 0}{" "}
                       (USDT)
                     </h4>
                   </div>
@@ -380,7 +365,7 @@ const Dashboard = () => {
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
                     <h4 className="mb-0">
-                      {tokenRewarded ? tokenRewarded : 0} TRCT
+                      {tokenRewarded ? tokenRewarded : 0} (TRCT)
                     </h4>
                   </div>
                 </div>
@@ -396,7 +381,9 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{tokenPrice ? tokenPrice : 0} USDT </h4>
+                    <h4 className="mb-0">
+                      {tokenPrice ? tokenPrice : 0} (USDT)
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -410,7 +397,9 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h4 className="mb-0">{nextReward ? nextReward : 0} TRCT </h4>
+                    <h4 className="mb-0">
+                      {nextReward ? nextReward : 0} (TRCT)
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -430,7 +419,9 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 className="mb-0">{payAutoPool ? payAutoPool : 0} USDT </h2>
+                    <h2 className="mb-0">
+                      {payAutoPool ? payAutoPool : 0} (USDT)
+                    </h2>
                   </div>
                 </div>
               </div>
@@ -444,7 +435,9 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-8 col-sm-12 col-xl-8 my-auto">
                   <div className="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 className="mb-0">{levelPrice ? levelPrice : 0} USDT </h2>
+                    <h2 className="mb-0">
+                      {levelPrice ? levelPrice : 0} (USDT)
+                    </h2>
                   </div>
                 </div>
               </div>

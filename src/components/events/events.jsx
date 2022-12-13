@@ -150,6 +150,9 @@ const BasicTable = () => {
     const convert_income = web3.utils.fromWei(level_income, "ether");
     setLevelPrice(convert_income);
   };
+  function roundToFour(num) {
+    return +(Math.round(num + "e+4") + "e-4");
+  }
 
   const handleSubmitUser = async (event) => {
     event.preventDefault();
@@ -158,11 +161,13 @@ const BasicTable = () => {
     let ICU_ = new web3.eth.Contract(ICU.ABI, ICU.address);
     let userDetail = await ICU_.methods.users(users_).call();
 
+    const income_ = web3.utils.fromWei(userDetail.income, "ether");
+
     setUsersAutoPoolPayReceived(userDetail.autoPoolPayReceived);
     setUsersAutopoolPayReciever(userDetail.autopoolPayReciever);
     setUsesBatchpaid(userDetail.batchPaid);
     setUsersId(userDetail.id);
-    setUsersIncome(userDetail.income);
+    setUsersIncome(roundToFour(income_));
     setUsersIsExist(userDetail.isExist);
     setUsersLevelIncomeReceived(userDetail.levelIncomeReceived);
     setUsersMIssedPoolPayment(userDetail.missedPoolPayment);
@@ -188,26 +193,8 @@ const BasicTable = () => {
 
   return (
     <div className="custom-eventlist">
-      {/* <div className="page-header">
-        <h3 className="page-title">
-          Events :-{" "}
-          <span className="totalCount">( {totalCount ? totalCount : 0} )</span>{" "}
-        </h3>
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <a href="!#" onClick={(event) => event.preventDefault()}>
-                Event
-              </a>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              List
-            </li>
-          </ol>
-        </nav>
-      </div> */}
       <div className="row">
-        <div className="col-lg-6 col-md-6 col-sm-12 grid-margin">
+        <div className="col-lg-6 col-md-12 col-sm-12 grid-margin">
           <div className="card">
             <div className="card-body">
               <h5>Check Wallet by ID </h5>
@@ -308,39 +295,41 @@ const BasicTable = () => {
                   </div>
 
                   {users_autoPoolPayReceived ? (
-                    <>
+                    <div className="user-detail-res">
                       <div className="d-flex">
-                        <h4> Auto Pool Pay Recived :- </h4>
+                        <h4 className="heading_"> Auto Pool Pay Recived :- </h4>
                         <h4> {users_autoPoolPayReceived}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Auto Pool Pay Reciver :- </h4>
+                        <h4 className="heading_"> Auto Pool Pay Reciver :- </h4>
                         <h4> {users_autopoolPayReciever}</h4>
                       </div>
-                      <div className="d-flex">
-                        <h4> My User ID :- </h4> <h4> {users_id}</h4>
+                                           <div className="d-flex">
+                        <h4 className="heading_"> My UserID :- </h4>{" "}
+                        <h4> {users_id}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Total Income :- </h4>
-                        <h4> {users_income}</h4>
+                        <h4 className="heading_">Total Income :- </h4>
+                        <h4> {users_income}USDT</h4>
+                     
                       </div>
                       <div className="d-flex">
-                        <h4> Total Level Income :- </h4>
+                        <h4 className="heading_"> Total Level Income :- </h4>
                         <h4> {users_levelIncomeReceived}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Missed AutoPool Income :- </h4>
+                        <h4 className="heading_"> Missed AutoPool Income :- </h4>
                         <h4> {users_missedPoolPayment}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> Total Direct :- </h4>
+                        <h4 className="heading_"> Total Direct :- </h4>
                         <h4> {users_referredUsers}</h4>
                       </div>
                       <div className="d-flex">
-                        <h4> My sponsor :- </h4>
+                        <h4 className="heading_"> My sponsor :- </h4>
                         <h4> {users_referrerID}</h4>
                       </div>
-                    </>
+                    </div>
                   ) : (
                     0
                   )}
